@@ -2,22 +2,6 @@ console.log('***** Music Collection *****')
 
 let collection = [];
 
-// let nameoftrack = ['Sorry', 'Just my heart', 'Toasty']
-// let duration = ['12', '14', '63']
-//
-// function tracks(trackName, trackDur) {
-//   let track;
-//   for (let i = 0; i < trackName.length; i++) {
-//     console.log(trackName[i]);
-//   }
-//   for (let i = 0; i < trackDur.length; i++) {
-//     console.log(trackDur[i]);
-//   }
-// }
-//
-// console.log(tracks(nameoftrack, duration));
-
-
 function addToCollection(title, artist, yearPublished, track1, track2, track3) {
   let album = {
     title: title, //This also works by just putting title here and not title: title.  Wasn't sure the proper formatting
@@ -57,7 +41,7 @@ function showCollection(array) {
 showCollection(collection); // Check console for results.
 // If I put this into a console log it will run the function but also include an undefined statment at the end of running the function.
 
-// Need a console log to test
+
 
 function findByArtist(artists) {
   let results = [];
@@ -75,36 +59,18 @@ console.log('Testing to look for an artist that I know is not in the colletion (
 
 function search(artist, year, trackName) {
   let newResults = [];
-  if (artist === undefined && year === undefined) {
+  if (artist === undefined && year === undefined && trackName === undefined) {
   return collection; // Needs to run before the loop
   }
   for (let i = 0; i < collection.length; i++) {
-    if (artist === collection[i].artist && year === collection[i].yearPublished) {
+    if (artist === collection[i].artist && year === collection[i].yearPublished && trackName === collection[i].tracks.track[i]) {
     newResults.push(collection[i]);
     }
   }
   return newResults;
 }
 
-
-
-
 console.log('Testing to see if our search works with both arguments being found (Should return 1 album)', search('Quietdrive', 2006));
 console.log('Testing with an album that is not in the collection (should be empty array)', search('Ray Chalres', 1997));
 console.log('Testing if no arguments are entered into the search function (should return the collection)', search());
-
-addToCollection('Close Your Eyes', 'Quietdrive', 2009, ['Jessica', '3\:12'], ['Just My Heart', '3\:50'], ['Call Me Up', '3\:30']);
-
-showCollection(collection);
-
-
-let obj = {
-  stuff: 'things',
-  rocks: 'party',
-  array: {
-    array1: ['taco', 'cat'],
-    array2: ['shifty', 'shellshock']
-  }
-}
-
-console.log(obj.array.array1[1]);
+console.log('Testing with track name', search('Incububs', 1997, 'Redefine'));
