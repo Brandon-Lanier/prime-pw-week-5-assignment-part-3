@@ -8,10 +8,10 @@ function addToCollection(title, artist, yearPublished, tracks) {
     artist: artist,
     yearPublished: yearPublished,
     tracks: tracks
-  }; 
+  };
   collection.push(album);
   return album;
-};
+}
 
 console.log('Adding an record to our collection', addToCollection('When All That\'s Left Is You', 'Quietdrive', 2006, [['Rise From The Ashes', '3\:00'], ['Get Up', '3\:35'], ['Take A Drink', '2\:44']]));
 // return is working per console in browser.
@@ -34,8 +34,9 @@ function showCollection(array) {
   }
 }
 
+console.log(`Testing out our show collection function:`);
 showCollection(collection); // Check console for results.
-// If I put this into a console log it will run the function but also include an undefined statment at the end of running the function.
+// If I call this function inside a console log it will run the function but also include an undefined statment at the end of running the function.
 
 
 
@@ -72,7 +73,7 @@ function search(artist, year, trackName) {
 }
 
 
-console.log('Testing with an album that is not in the collection (Should be empty array):', search('Ray Chalres', 1997));
+console.log('Testing with an album that is not in the collection (Should be empty array):', search('Ray Chalres', 1997, 'Song'));
 console.log('Testing if no arguments are entered into the search function (Should return the collection):', search());
 console.log('Testing with track name (Should return 1 album):', search('The 1975', 2018, 'The 1975'));
-console.log('Testing to see if our search works with both arguments being found (Should return 1 album):', search('Quietdrive', 2006, 'Get Up'));
+console.log('Testing to see if our search works with all arguments being found (Should return 1 album):', search('Quietdrive', 2006, 'Get Up'));
