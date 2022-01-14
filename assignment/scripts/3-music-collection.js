@@ -13,18 +13,18 @@ function addToCollection(title, artist, yearPublished, tracks) {
   return album;
 } // end of function
 
-console.log('Adding an record to our collection', addToCollection('When All That\'s Left Is You', 'Quietdrive', 2006, tracks('Rise From The Ashes', '3\:30', 'Get Up', '3\:15', 'Take A Drink', '2\:49')));
+console.log('Adding an record to our collection', addToCollection('When All That\'s Left Is You', 'Quietdrive', 2006, tracks('Rise From The Ashes', '3\:00', 'Get Up', '3\:35', 'Take A Drink', '2\:44')));
 // return is working per console in browser.
 console.log('Adding album to our collection', addToCollection('SCIENCE', 'Incubus', 1997, tracks('Redefine', '3\:20', 'Vitamin', '3\:13', 'New Skin', '3\:51')));
 console.log('Adding another album from an already used artist', addToCollection('Deliverance', 'Quietdrive', 2008, tracks('Believe', '3\:31', 'Deliverance', '3\:22', 'Motivation', '2\:50')));
 console.log('Adding a new album', addToCollection('Futures', 'Jimmy Eat World', 2001, tracks('Futures', '3\:58', 'Just Tonight', '3\:26', 'Work', '3\:24')));
 console.log('Adding another great album', addToCollection('Love is Dead', 'Chvrches', 2018, tracks('Graffiti', '3\:39', 'Get Out', '3\:51', 'Deliverance', '4\:13')));
 console.log('Adding last album', addToCollection('A Brief Inquiry into Online Relationships', 'The 1975', 2018, tracks('The 1975', '1\:34', 'Give Yourself A Try', '3\:17', 'TooTimeTooTimeTooTime', '3\:28')));
-
 console.log(`Lets take a look at our music collection`, collection);
 
+
 function tracks(songTitle1, songDur1, songTitle2, songDur2, songTitle3, songDur3) {
-  let tracks = []
+  let tracks = [] // empty array to push the tracks to.  Assignment calls for tracks to be in an array.
   let track1 = {
     name: songTitle1,
     duration: songDur1
@@ -37,11 +37,11 @@ function tracks(songTitle1, songDur1, songTitle2, songDur2, songTitle3, songDur3
     name: songTitle3,
     duration: songDur3
   };
-  tracks.push(track1, track2, track3);
+  tracks.push(track1, track2, track3); // pushing all track objects into array.
   return tracks;
 }
 
-console.log(`Test tracks ${tracks('Rsdfsdf', '232', 'asdfsdf', '123', 'asdfsfd', '123')}`);
+
 
 
 function showCollection(array) {
@@ -76,14 +76,14 @@ console.log('Testing to look for an artist that I know is not in the colletion (
 
 function search(artist, year, trackName) {
   let newResults = [];
-  if (artist === undefined && year === undefined && trackName === undefined) {
+  if (artist === undefined && year === undefined && trackName === undefined) { // if nothing is entered into the arguments
   return collection; // Needs to run before the loop
   }
   for (let i = 0; i < collection.length; i++) {
     if (artist === collection[i].artist && year === collection[i].yearPublished) {
-      for (let j = 0; j < collection[i].tracks.length; j++) { //Nested loop to check the tracks array
-        if (trackName === collection[i].tracks[j].name) { // Only want to check the track name which is the 0 index of the nested arrays
-          newResults.push(collection[i]);
+      for (let j = 0; j < collection[i].tracks.length; j++) { // Nested loop to check the tracks array
+        if (trackName === collection[i].tracks[j].name) { // loop through the tracks array at the name key
+          newResults.push(collection[i]); // returning the full album if found
           console.log('Match Found!'); //Added for testing
         }
       }
