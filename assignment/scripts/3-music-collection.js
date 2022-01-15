@@ -2,7 +2,6 @@ console.log('***** Music Collection *****')
 
 let collection = [];
 
-
 function addToCollection(title, artist, yearPublished, tracks) {
   let album = {
     title: title,
@@ -42,7 +41,6 @@ function tracks(songTitle1, songDur1, songTitle2, songDur2, songTitle3, songDur3
   return tracks;
 }
 
-
 function showCollection(array) {
   console.log(`Number of albums in our collection is ${array.length}.`);
   for (let record of array) {
@@ -66,13 +64,11 @@ function findByArtist(artists) {
   return results;
 }
 
-
-console.log('Testing for an artist that I know to be in the collection (Should be 2 of them):', findByArtist('Quietdrive'));
+console.log('Testing for an artist that has 2 albums in the collection (Should return 2 different albums):', findByArtist('Quietdrive'));
 console.log('Testing to look for an artist that I know is not in the colletion (Should be an empty array)', findByArtist('Silversun Pickups'));
 
-
 function search(artist, year, trackName) {
-  let newResults = [];
+  let newResults = []; // Results must return in an array per assignment.
   if (artist === undefined && year === undefined && trackName === undefined) { // if nothing is entered into the arguments
   return collection; // Needs to run before the loop
   }
@@ -86,9 +82,8 @@ function search(artist, year, trackName) {
       }
     }
   }
-  return newResults; //if not match found return empty array. Otherwise return album.
+  return newResults; //if not match found return empty array. Otherwise return album in array.
 }
-
 
 console.log('Testing with an album that is not in the collection (Should be empty array):', search('Ray Chalres', 1997, 'Song'));
 console.log('Testing if no arguments are entered into the search function (Should return the collection):', search());
