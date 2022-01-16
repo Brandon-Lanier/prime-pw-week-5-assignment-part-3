@@ -56,19 +56,20 @@ showCollection(collection); // Check console for results.
 // If I call this function inside a console log it will run the function but also include an undefined statment at the end of running the function.
 
 function findByArtist(artists) {
-  let results = [];
+  let findResults = [];
   for (let i = 0; i < collection.length; i++) {
     if (artists === collection[i].artist)
-    results.push(collection[i]);
+    findResults.push(collection[i]);
   }
-  return results;
+  showCollection(findResults); // Not necessary but added to display the results in formatting from showCollection.
+  return findResults;
 }
 
 console.log('Testing for an artist that has 2 albums in the collection (Should return 2 different albums):', findByArtist('Quietdrive'));
 console.log('Testing to look for an artist that I know is not in the colletion (Should be an empty array)', findByArtist('Silversun Pickups'));
 
 function search(artist, year, trackName) {
-  let newResults = []; // Results must return in an array per assignment.
+  let searchResults = []; // //Could also declare this outside the function if we wanted the results to be usable elsewhere.
   if (artist === undefined && year === undefined && trackName === undefined) { // if nothing is entered into the arguments
   return collection; // Needs to run before the loop
   }
@@ -76,13 +77,14 @@ function search(artist, year, trackName) {
     if (artist === collection[i].artist && year === collection[i].yearPublished) {
       for (let j = 0; j < collection[i].tracks.length; j++) { // Nested loop to check the tracks array
         if (trackName === collection[i].tracks[j].name) { // loop through the tracks array at the name key
-          newResults.push(collection[i]); // returning the full album if found
+          searchResults.push(collection[i]); // returning the full album if found
           console.log('Match Found!'); //Added for testing
         }
       }
     }
   }
-  return newResults; //if not match found return empty array. Otherwise return album in array.
+  showCollection(searchResults); //Added this to show the search results in the format from showCollection
+  return searchResults; //if not match found return empty array. Otherwise return album in array
 }
 
 console.log('Testing with an album that is not in the collection (Should be empty array):', search('Ray Chalres', 1997, 'Song'));
